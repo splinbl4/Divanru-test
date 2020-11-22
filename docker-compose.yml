@@ -1,9 +1,48 @@
-version: '2'
+version: "3.7"
 services:
-  php:
-    image: yiisoftware/yii2-php:7.4-apache
+  divanru-nginx:
+    build:
+      context: docker
+      dockerfile: nginx/Dockerfile
     volumes:
-      - ~/.composer-docker/cache:/root/.composer/cache:delegated
-      - ./:/app:delegated
+      - ./:/app
+    depends_on:
+      - divanru-php-fpm
     ports:
-      - '8000:80'
+      - "8080:80"
+
+  divanru-php-fpm:
+    build:
+      context: docker
+      dockerfile: php-fpm/Dockerfile
+    environment:
+      APP_ENV: dev
+      APP_DEBUG: 1
+      PHP_IDE_CONFIG: serverName=API
+    volumes:
+      - ./:/app
+
+  divanru-php-cli:
+    build:
+      context: docker
+      dockerfile: php-cli/Dockerfile
+    environment:
+      APP_ENV: dev
+      APP_DEBUG: 1
+      PHP_IDE_CONFIG: serverName=API
+    volumes:
+      - ./:/app
+
+  divanru-postgres:
+    image: postgres:11.2-alpine
+    volumes:
+      - divanru-postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: divanru
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: divanru
+    ports:
+      - "54321:5432"
+
+volumes:
+  divanru-postgres:
