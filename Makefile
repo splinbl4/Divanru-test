@@ -18,5 +18,5 @@ divanru-wait-db:
 	until docker-compose exec -T divanru-postgres pg_isready --timeout=0 --dbname=app ; do sleep 1 ; done
 
 divanru-migrations:
-	docker-compose run --rm divanru-php-cli php yii migrate
+	docker-compose run --rm divanru-php-cli php yii migrate --interactive=0
 
