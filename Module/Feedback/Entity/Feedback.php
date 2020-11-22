@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace app\models;
+namespace app\Module\Feedback\Entity;
 
 use yii\db\ActiveRecord;
 
 /**
  * Class Feedback
- * @package app\models
+ * @package Module\Feedback\Entity
  *
  * @property integer $id
- * @property string $customer
+ * @property string|null $customer
  * @property string $phone
  * @property integer $status
  */

@@ -12,7 +12,7 @@ return [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
-    'language' => 'en-US',
+    'language' => 'ru-RU',
     'components' => [
         'db' => $db,
         'mailer' => [
@@ -31,11 +31,9 @@ return [
             'cookieValidationKey' => 'test',
             'enableCsrfValidation' => false,
             // but if you absolutely need it set cookie domain to localhost
-            /*
             'csrfCookie' => [
                 'domain' => 'localhost',
             ],
-            */
         ],
     ],
     'params' => $params,

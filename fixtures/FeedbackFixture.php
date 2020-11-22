@@ -14,5 +14,5 @@ class FeedbackFixture extends ActiveFixture
     /**
      * @var string
      */
-    public $modelClass = 'app\models\Feedback';
+    public $modelClass = 'app\Module\Feedback\Entity\Feedback';
 }

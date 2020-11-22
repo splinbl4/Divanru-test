@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use app\models\Feedback;
+use app\Module\Feedback\Entity\Feedback;
 
 return [
     [

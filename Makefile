@@ -23,3 +23,5 @@ divanru-migrations:
 divanru-fixture:
 	docker-compose run --rm divanru-php-cli php yii fixture "*" --interactive=0
 
+divanru-test:
+	docker-compose run --rm divanru-php-cli php vendor/bin/codecept run
