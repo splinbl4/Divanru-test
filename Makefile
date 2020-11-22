@@ -9,7 +9,7 @@ docker-down:
 docker-down-clear:
 	docker-compose down -v --remove-orphans
 
-divanru-init: divanru-composer-install divanru-wait-db divanru-migrations
+divanru-init: divanru-composer-install divanru-wait-db divanru-migrations divanru-fixture
 
 divanru-composer-install:
 	docker-compose run --rm divanru-php-cli composer install
@@ -19,4 +19,7 @@ divanru-wait-db:
 
 divanru-migrations:
 	docker-compose run --rm divanru-php-cli php yii migrate --interactive=0
+
+divanru-fixture:
+	docker-compose run --rm divanru-php-cli php yii fixture "*" --interactive=0
 
