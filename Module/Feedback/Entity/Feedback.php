@@ -11,7 +11,7 @@ use yii\db\ActiveRecord;
  * @package Module\Feedback\Entity
  *
  * @property integer $id
- * @property string|null $customer
+ * @property string $customer
  * @property string $phone
  * @property integer $status
  */
@@ -55,5 +55,17 @@ class Feedback extends ActiveRecord
     public static function tableName(): string
     {
         return '{{%feedbacks}}';
+    }
+
+    /**
+     * @return string[]
+     */
+    public static function statusList(): array
+    {
+        return [
+            self::STATUS_MODERATION => 'На модерации',
+            self::STATUS_PROCESSED => 'Обработана',
+            self::STATUS_REJECTED => 'Отклонена'
+        ];
     }
 }
